@@ -1,0 +1,37 @@
+This is a step by step guide to install and run an ssh server on an android pc required
+Remember you can't do this if you do not have the ip of the device witch you can find the ip
+by going to the following link https://ipinfo.io/ or https://www.ipchicken.com/
+
+1. Go here https://apkpure.com/termux/com.termux/
+
+2. We can also run this adb install ~/Downloads/Termux_v0.73_apkpure.com.apk
+
+3. Now in the termux application run these commands as followed
+
+4. pkg install tsu
+
+5. pkg install root-repo
+
+6. pkg install update
+
+7. pkg install grade
+
+8. pkg install openssh
+
+9. Now, set a password for the current user by running passwd, remember this password you will need it later
+
+10. Then, Start the SSH server inside by running sshd, do not close/exit the app after running the command
+
+11. On the pc terminal run the following, dont use root@ as prefix to the ip address
+
+12. ssh <ip address of android device> -p 8022
+
+13. When asked for password, enter the password you used in the steps above
+This will drop you into a shell where you can do further installs using pkg install <name> or run any other command you would like wget, curl you get a proper linux shell, sweet, enjoy!
+
+14. Host key verification error
+If for some odd reason you are getting Host key verification failed error, run the following first
+ssh-keygen -R <ip address of android device>
+If it still gives you trouble edit ~/.ssh/known_hosts, locate the line(s) with the ip address and delete it and then connect again
+Waiting forever to connect
+There are instances when the pc to android ip connection will wait a long time. If so, first check if you can ping the android's ip address, and if its not pingable, perhaps reboot the android device. Stating the obvious here, unless the android cant be pinged you cant ssh into it.
